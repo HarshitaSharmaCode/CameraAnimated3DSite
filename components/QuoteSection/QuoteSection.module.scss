@@ -1,0 +1,32 @@
+.section {
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100);
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(48 / var(--single-col-width) * 1rem)
+    calc(24 / var(--single-col-width) * 1rem);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 3;
+  max-width: calc(var(--grid-area-medium, 640) * 1px);
+}
+
+.quote {
+  font-size: calc(22 / var(--single-col-width) * 1rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 calc(20 / var(--single-col-width) * 1rem);
+}
+
+.attribution {
+  font-size: calc(11 / var(--single-col-width) * 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+}

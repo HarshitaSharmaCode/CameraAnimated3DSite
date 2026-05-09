@@ -1,0 +1,85 @@
+.hero {
+  position: relative;
+  height: calc(var(--vh, 1vh) * 100);
+  background: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.videoWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 14, 14, 0.35) 0%,
+    transparent 35%,
+    rgba(14, 14, 14, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: calc(28 / var(--single-col-width) * 1rem)
+    calc(20 / var(--single-col-width) * 1rem)
+    calc(48 / var(--single-col-width) * 1rem);
+  color: var(--color-text-inverse);
+  max-width: calc(900 / var(--single-col-width) * 1rem);
+}
+
+.kicker {
+  font-size: calc(11 / var(--single-col-width) * 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+  margin-bottom: calc(12 / var(--single-col-width) * 1rem);
+}
+
+.title {
+  font-size: calc(28 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  line-height: 1.05;
+  margin: 0 0 calc(20 / var(--single-col-width) * 1rem);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(12 / var(--single-col-width) * 1rem);
+}
+
+.ctaPrimary,
+.ctaGhost {
+  padding: calc(14 / var(--single-col-width) * 1rem)
+    calc(22 / var(--single-col-width) * 1rem);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: calc(11 / var(--single-col-width) * 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: transform 0.35s var(--ease-out-expo), opacity 0.35s;
+}
+
+.ctaPrimary {
+  background: var(--color-sunset);
+  color: var(--color-bg-dark);
+}
+
+.ctaGhost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--color-text-inverse);
+}
+
+.ctaPrimary:hover,
+.ctaGhost:hover {
+  transform: translateY(-2px);
+}

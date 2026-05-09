@@ -1,0 +1,37 @@
+.lightLeakContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.lightLeakLeft {
+  position: absolute;
+  top: -10%;
+  left: -20%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse 60% 40% at 20% 30%,
+    rgba(255, 200, 100, 0.28),
+    transparent
+  );
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.lightLeakRight {
+  position: absolute;
+  bottom: -10%;
+  right: -20%;
+  width: 50%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse 40% 55% at 80% 70%,
+    rgba(255, 140, 60, 0.18),
+    transparent
+  );
+  mix-blend-mode: screen;
+  will-change: transform;
+}

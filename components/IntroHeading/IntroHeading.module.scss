@@ -1,0 +1,48 @@
+.section {
+  min-height: calc(var(--vh, 1vh) * 100);
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(48 / var(--single-col-width) * 1rem)
+    calc(20 / var(--single-col-width) * 1rem);
+}
+
+.inner {
+  max-width: calc(var(--grid-area-medium, 600) * 1px);
+}
+
+.kicker {
+  font-size: calc(10 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-tangerine);
+  margin-bottom: calc(16 / var(--single-col-width) * 1rem);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(12 / var(--single-col-width) * 1rem);
+  margin-top: calc(28 / var(--single-col-width) * 1rem);
+}
+
+.cta {
+  padding: calc(14 / var(--single-col-width) * 1rem)
+    calc(22 / var(--single-col-width) * 1rem);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: calc(11 / var(--single-col-width) * 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--color-sunset);
+  color: var(--color-bg-dark);
+}
+
+.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: var(--color-text-inverse);
+}

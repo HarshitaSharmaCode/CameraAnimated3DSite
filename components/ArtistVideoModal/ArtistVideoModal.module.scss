@@ -1,0 +1,33 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(14, 14, 14, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 / var(--single-col-width) * 1rem);
+}
+
+.inner {
+  width: min(960px, 100%);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: calc(12 / var(--single-col-width) * 1rem);
+  right: calc(12 / var(--single-col-width) * 1rem);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+}

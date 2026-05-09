@@ -1,0 +1,80 @@
+.section {
+  padding: calc(56 / var(--single-col-width) * 1rem)
+    calc(20 / var(--single-col-width) * 1rem)
+    calc(72 / var(--single-col-width) * 1rem);
+  background: var(--color-bg-warm);
+}
+
+.title {
+  font-size: calc(18 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  margin: 0 0 calc(28 / var(--single-col-width) * 1rem);
+}
+
+.viewport {
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  gap: calc(16 / var(--single-col-width) * 1rem);
+  width: max-content;
+  padding-bottom: calc(8 / var(--single-col-width) * 1rem);
+  will-change: transform;
+}
+
+.card {
+  width: min(72vw, 320px);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(14, 14, 14, 0.08);
+  flex-shrink: 0;
+}
+
+.cardImage {
+  aspect-ratio: 4 / 3;
+  background: #e8e4df;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cardBody {
+  padding: calc(16 / var(--single-col-width) * 1rem);
+}
+
+.cardTitle {
+  font-size: calc(13 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  margin: 0 0 calc(8 / var(--single-col-width) * 1rem);
+  line-height: 1.25;
+}
+
+.price {
+  font-size: calc(14 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  margin: 0 0 calc(14 / var(--single-col-width) * 1rem);
+}
+
+.buy {
+  display: inline-block;
+  padding: calc(10 / var(--single-col-width) * 1rem)
+    calc(18 / var(--single-col-width) * 1rem);
+  border-radius: 999px;
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  font-weight: 600;
+  font-size: calc(10 / var(--single-col-width) * 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}

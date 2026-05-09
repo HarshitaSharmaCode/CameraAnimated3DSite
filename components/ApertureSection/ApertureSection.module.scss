@@ -1,0 +1,50 @@
+.section {
+  height: calc(var(--vh, 1vh) * 140);
+  position: relative;
+  background: var(--color-bg-dark);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 / var(--single-col-width) * 1rem);
+}
+
+.eyebrow {
+  font-size: calc(10 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-chili);
+  margin-bottom: calc(16 / var(--single-col-width) * 1rem);
+}
+
+.title {
+  font-size: calc(20 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  text-align: center;
+  max-width: calc(var(--grid-area-medium, 560) * 1px);
+  margin: 0 0 calc(28 / var(--single-col-width) * 1rem);
+}
+
+.frame {
+  width: min(78vw, 440px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center center;
+    will-change: transform, filter;
+  }
+}

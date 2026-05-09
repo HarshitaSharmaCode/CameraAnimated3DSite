@@ -1,0 +1,65 @@
+.section {
+  height: calc(var(--vh, 1vh) * 130);
+  position: relative;
+  background: var(--color-bg-warm);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(20 / var(--single-col-width) * 1rem);
+  padding: calc(24 / var(--single-col-width) * 1rem);
+}
+
+.eyebrow {
+  font-size: calc(10 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tangerine);
+}
+
+.copy {
+  font-size: calc(18 / var(--single-col-width) * 1rem);
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  max-width: calc(var(--grid-area-medium, 560) * 1px);
+  margin: 0;
+}
+
+.frameWrap {
+  width: min(80vw, 480px);
+  position: relative;
+}
+
+.frame {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(14, 14, 14, 0.18);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    will-change: transform;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 240, 235, 0.95),
+    rgba(245, 240, 235, 0)
+  );
+  pointer-events: none;
+  opacity: 1;
+  will-change: opacity;
+}

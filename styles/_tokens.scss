@@ -1,0 +1,44 @@
+:root {
+  --color-bg: #ffffff;
+  --color-bg-dark: #0e0e0e;
+  --color-bg-warm: #f5f0eb;
+  --color-bg-footer: #f2f2f2;
+
+  --color-text: #0e0e0e;
+  --color-text-inverse: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.5);
+  --color-text-muted: rgba(255, 255, 255, 0.3);
+
+  --color-tangerine: #ff8200;
+  --color-azure: #198cd9;
+  --color-chili: #d60026;
+  --color-sunset: #ffb500;
+  --color-spring: #78be20;
+  --color-polaroid-red: #d6001c;
+
+  --single-col-width: calc(375 / 25);
+  --background-position: 0;
+  --vh: 1vh;
+
+  --swiper-theme-color: #007aff;
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --single-col-width: calc(768 / 32);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  :root {
+    --single-col-width: calc(1500 / 50);
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  :root {
+    --single-col-width: calc(2000 / 50);
+  }
+}

@@ -1,0 +1,21 @@
+.heading {
+  font-family: var(--real-head-offc), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: calc(24 / var(--single-col-width) * 1rem);
+  line-height: 1.1;
+  color: hsla(0, 0%, 100%, 0.3);
+  margin: 0;
+  max-width: calc(var(--grid-area-medium, 600) * 1px);
+
+  background-image: linear-gradient(
+    105deg,
+    #fff,
+    #fff 33.33%,
+    hsla(0, 0%, 100%, 0) 66.67%,
+    hsla(0, 0%, 100%, 0)
+  );
+  background-position-x: calc(var(--background-position) * 1%);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
