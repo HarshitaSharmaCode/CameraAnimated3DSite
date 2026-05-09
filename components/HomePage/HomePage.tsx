@@ -11,7 +11,6 @@ import {
   type CameraModeItem,
 } from "@/components/CameraModes/CameraModes";
 import { CTASection } from "@/components/CTASection/CTASection";
-import { FilmSection } from "@/components/FilmSection/FilmSection";
 import { Hero } from "@/components/Hero/Hero";
 import { Imperfectionists } from "@/components/Imperfectionists/Imperfectionists";
 import { ImperfectionistsGallery } from "@/components/ImperfectionistsGallery/ImperfectionistsGallery";
@@ -150,7 +149,6 @@ export function HomePage() {
           title: "Designed in-house around manual controls and the Japan-team lens.",
         }}
       />
-      <FilmSection />
       <Imperfectionists />
       <ImperfectionistsGallery />
       <CTASection />
