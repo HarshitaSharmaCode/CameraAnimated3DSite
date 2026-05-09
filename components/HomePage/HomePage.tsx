@@ -56,41 +56,38 @@ const cameraModes: CameraModeItem[] = [
   },
 ];
 
+const POLAROID_STATIC = "https://i2-camera.polaroid.com/_next/static/media";
+
 const bundles: BundleItem[] = [
   {
     id: "b1",
     title: "Polaroid I-2 & i-Type Color Film Set",
     price: "€699.99",
-    image:
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=80",
+    image: `${POLAROID_STATIC}/bundle-type-film.5143d091.png`,
   },
   {
     id: "b2",
     title: "Polaroid I-2 Starter Set",
     price: "€733.97",
-    image:
-      "https://images.unsplash.com/photo-1617638924391-dcfb27634ca4?auto=format&fit=crop&w=700&q=80",
+    image: `${POLAROID_STATIC}/bundle-film-pack.4f94cb8e.png`,
   },
   {
     id: "b3",
     title: "Polaroid I-2 & Premium Shoulder Strap Set",
     price: "€734.98",
-    image:
-      "https://images.unsplash.com/photo-1564466021189-6e1358809326?auto=format&fit=crop&w=700&q=80",
+    image: `${POLAROID_STATIC}/bundle-shoulder-strap.90157290.png`,
   },
   {
     id: "b4",
     title: "Polaroid I-2 & Shoulder Holster Set",
     price: "€786.97",
-    image:
-      "https://images.unsplash.com/photo-1519183071298-a2962fc14b49?auto=format&fit=crop&w=700&q=80",
+    image: `${POLAROID_STATIC}/bundle-film-shoulder-holster.06abf7c5.png`,
   },
   {
     id: "b5",
     title: "Polaroid I-2 Travel Set",
     price: "€786.97",
-    image:
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=700&q=80",
+    image: `${POLAROID_STATIC}/bundle-type-film-pack.50dafca4.png`,
   },
 ];
 
