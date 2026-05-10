@@ -28,6 +28,10 @@ interface ScrollSequenceProps {
   frameFolderMobile?: string;
   ariaLabel: string;
   caption?: ScrollCaption;
+  /** Scroll progress (0–1) at which caption starts fading in. Default 0.28 (≈ Shutter frame) */
+  captionFadeStart?: number;
+  /** Scroll progress (0–1) at which caption is fully visible. Default 0.68 (≈ Multi Ex. frame) */
+  captionFadeEnd?: number;
 }
 
 export function ScrollSequence({
@@ -37,9 +41,14 @@ export function ScrollSequence({
   frameFolderMobile,
   ariaLabel,
   caption,
+  captionFadeStart = 0.28,
+  captionFadeEnd = 0.68,
 }: ScrollSequenceProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const captionRef = useRef<HTMLDivElement>(null);
+  const lightLeakLeftRef = useRef<HTMLSpanElement>(null);
+  const lightLeakRightRef = useRef<HTMLSpanElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const tickingRef = useRef(false);
   const loadedRef = useRef(0);
@@ -73,16 +82,35 @@ export function ScrollSequence({
     setLoadProgress(0);
     imagesRef.current = [];
 
-    const currentFrameIndex = (): number => {
+    const getScrollProgress = (): number => {
       const rect = section.getBoundingClientRect();
       const scrollSpan = section.offsetHeight - window.innerHeight;
-      // Guard against zero/negative spans (section shorter than viewport) which
-      // would otherwise produce NaN/Infinity here.
-      const progress =
-        scrollSpan > 0
-          ? Math.max(0, Math.min(1, -rect.top / scrollSpan))
-          : 0;
+      return scrollSpan > 0
+        ? Math.max(0, Math.min(1, -rect.top / scrollSpan))
+        : 0;
+    };
+
+    const currentFrameIndex = (progress: number): number => {
       return Math.min(activeCount - 1, Math.floor(progress * activeCount));
+    };
+
+    const updateCaptionOpacity = (progress: number) => {
+      const el = captionRef.current;
+      if (!el) return;
+      const opacity =
+        progress <= captionFadeStart
+          ? 0
+          : progress >= captionFadeEnd
+            ? 1
+            : (progress - captionFadeStart) / (captionFadeEnd - captionFadeStart);
+      el.style.opacity = String(opacity);
+    };
+
+    const updateLightLeaks = (progress: number) => {
+      // Ramp from 0 → 1 across the full sequence (tiny dead zone at start)
+      const opacity = progress <= 0.05 ? 0 : Math.min(1, (progress - 0.05) / 0.95);
+      if (lightLeakLeftRef.current)  lightLeakLeftRef.current.style.opacity  = String(opacity);
+      if (lightLeakRightRef.current) lightLeakRightRef.current.style.opacity = String(opacity);
     };
 
     const drawFrame = (index: number) => {
@@ -107,7 +135,10 @@ export function ScrollSequence({
       canvas.style.height = `${window.innerHeight}px`;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
-      if (allLoadedRef.current) drawFrame(currentFrameIndex());
+      if (allLoadedRef.current) {
+        const p = getScrollProgress();
+        drawFrame(currentFrameIndex(p));
+      }
     };
 
     resize();
@@ -120,8 +151,6 @@ export function ScrollSequence({
       loadedRef.current++;
       setLoadProgress(loadedRef.current);
 
-      // Paint as soon as the first usable frame arrives so the canvas isn't
-      // blank while the rest of the sequence streams in.
       if (ok && !firstFramePainted && index === 0) {
         firstFramePainted = true;
         drawFrame(0);
@@ -130,7 +159,10 @@ export function ScrollSequence({
       if (loadedRef.current === activeCount) {
         allLoadedRef.current = true;
         setReady(true);
-        drawFrame(currentFrameIndex());
+        const p = getScrollProgress();
+        drawFrame(currentFrameIndex(p));
+        updateCaptionOpacity(p);
+        updateLightLeaks(p);
       }
     };
 
@@ -147,7 +179,10 @@ export function ScrollSequence({
       if (tickingRef.current || !allLoadedRef.current) return;
       tickingRef.current = true;
       requestAnimationFrame(() => {
-        drawFrame(currentFrameIndex());
+        const p = getScrollProgress();
+        drawFrame(currentFrameIndex(p));
+        updateCaptionOpacity(p);
+        updateLightLeaks(p);
         tickingRef.current = false;
       });
     };
@@ -158,7 +193,7 @@ export function ScrollSequence({
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", resize);
     };
-  }, [frameCount, frameCountMobile, frameFolder, frameFolderMobile]);
+  }, [frameCount, frameCountMobile, frameFolder, frameFolderMobile, captionFadeStart, captionFadeEnd]);
 
   const toneClass =
     caption?.tone === "azure"
@@ -186,7 +221,7 @@ export function ScrollSequence({
     >
       <div className={styles.stickyContainer}>
         {caption ? (
-          <div className={styles.caption}>
+          <div ref={captionRef} className={styles.caption} style={{ opacity: 0 }}>
             <span className={`${styles.eyebrow} ${toneClass}`}>
               {caption.eyebrow}
             </span>
@@ -199,6 +234,8 @@ export function ScrollSequence({
           </div>
         ) : null}
         <canvas ref={canvasRef} className={styles.canvas} />
+        <span ref={lightLeakLeftRef}  className={styles.lightLeakLeft}  aria-hidden />
+        <span ref={lightLeakRightRef} className={styles.lightLeakRight} aria-hidden />
         <span className={styles.gradientTopBottom} aria-hidden />
       </div>
     </section>

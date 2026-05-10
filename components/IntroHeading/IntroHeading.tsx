@@ -25,21 +25,9 @@ export function IntroHeading({ onWatchFilm }: IntroHeadingProps) {
     >
       <div className={styles.inner}>
         <p className={styles.kicker}>Built-in manual controls</p>
-        <Heading sectionRef={sectionRef} level={1}>
+        <Heading sectionRef={sectionRef} level={1} className={styles.bigHeading}>
           Master your craft with 6 camera modes
         </Heading>
-        <div className={styles.ctaRow}>
-          <a className={styles.cta} href="#modes">
-            Explore all modes
-          </a>
-          <button
-            type="button"
-            className={`${styles.cta} ${styles.ghost}`}
-            onClick={onWatchFilm}
-          >
-            Watch I-2 movie
-          </button>
-        </div>
       </div>
     </section>
   );

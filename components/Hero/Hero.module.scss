@@ -1,4 +1,10 @@
 .hero {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-dark);
+}
+
+.videoSection {
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
   background: var(--color-bg-dark);
@@ -13,41 +19,44 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14, 14, 14, 0.35) 0%,
-    transparent 35%,
-    rgba(14, 14, 14, 0.55) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(14, 14, 14, 0.35) 0%,
+      transparent 35%,
+      rgba(14, 14, 14, 0.55) 100%);
   pointer-events: none;
 }
 
 .content {
   position: relative;
   z-index: 2;
-  height: 100%;
+  width: 100%;
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  font-family: var(--real-head-offc), system-ui, sans-serif;
+  padding: calc(28 / var(--single-col-width) * 1rem) calc(20 / var(--single-col-width) * 1rem) calc(48 / var(--single-col-width) * 1rem);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: calc(28 / var(--single-col-width) * 1rem)
-    calc(20 / var(--single-col-width) * 1rem)
-    calc(48 / var(--single-col-width) * 1rem);
-  color: var(--color-text-inverse);
-  max-width: calc(900 / var(--single-col-width) * 1rem);
+  align-items: center;
+  text-align: center;
 }
 
-.kicker {
-  font-size: calc(11 / var(--single-col-width) * 1rem);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  opacity: 0.85;
-  margin-bottom: calc(12 / var(--single-col-width) * 1rem);
-}
+// .kicker {
+//   font-family: var(--real-head-offc), system-ui, sans-serif;
+//   font-size: calc(11 / var(--single-col-width) * 1rem);
+//   font-weight: 400;
+//   text-transform: uppercase;
+//   letter-spacing: 0.14em;
+//   color: var(--color-text-inverse);
+//   opacity: 0.85;
+//   margin-bottom: calc(12 / var(--single-col-width) * 1rem);
+// }
 
 .title {
+  font-family: var(--real-head-offc), system-ui, sans-serif;
   font-size: calc(28 / var(--single-col-width) * 1rem);
   font-weight: 600;
   line-height: 1.05;
+  color: var(--color-text-inverse);
   margin: 0 0 calc(20 / var(--single-col-width) * 1rem);
 }
 
@@ -59,8 +68,8 @@
 
 .ctaPrimary,
 .ctaGhost {
-  padding: calc(14 / var(--single-col-width) * 1rem)
-    calc(22 / var(--single-col-width) * 1rem);
+  font-family: var(--real-head-offc), system-ui, sans-serif;
+  padding: calc(14 / var(--single-col-width) * 1rem) calc(22 / var(--single-col-width) * 1rem);
   border-radius: 999px;
   font-weight: 600;
   font-size: calc(11 / var(--single-col-width) * 1rem);
@@ -72,6 +81,7 @@
 .ctaPrimary {
   background: var(--color-sunset);
   color: var(--color-bg-dark);
+  border-radius: 4px;
 }
 
 .ctaGhost {
@@ -82,4 +92,13 @@
 .ctaPrimary:hover,
 .ctaGhost:hover {
   transform: translateY(-2px);
+}
+
+@media only screen and (min-width: 1024px) {
+  .content {
+    text-align: left;
+    align-items: flex-start;
+    padding-left: calc(450 / var(--single-col-width) * 1rem);
+    padding-right: calc(450 / var(--single-col-width) * 1rem);
+  }
 }

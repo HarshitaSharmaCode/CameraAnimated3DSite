@@ -44,12 +44,12 @@
 
 .caption {
   position: absolute;
-  left: calc(20 / var(--single-col-width) * 1rem);
   right: calc(20 / var(--single-col-width) * 1rem);
   top: calc(96 / var(--single-col-width) * 1rem);
   z-index: 4;
   pointer-events: none;
   max-width: calc(var(--grid-area-medium, 600) * 1px);
+  text-align: right;
 }
 
 .eyebrow {
@@ -79,4 +79,21 @@
 
 .toneSpring {
   color: var(--color-spring);
+}
+
+.lightLeakLeft,
+.lightLeakRight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.lightLeakLeft {
+  background: radial-gradient(ellipse 55% 80% at 0% 50%, rgba(255, 140, 20, 0.72) 0%, rgba(255, 100, 0, 0.25) 45%, transparent 70%);
+}
+
+.lightLeakRight {
+  background: radial-gradient(ellipse 55% 80% at 100% 50%, rgba(255, 140, 20, 0.72) 0%, rgba(255, 100, 0, 0.25) 45%, transparent 70%);
 }

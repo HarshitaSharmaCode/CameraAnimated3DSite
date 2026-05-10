@@ -7,12 +7,14 @@ interface HeadingProps {
   children: React.ReactNode;
   sectionRef: React.RefObject<HTMLElement | null>;
   level?: 1 | 2 | 3;
+  className?: string;
 }
 
 export function Heading({
   children,
   sectionRef,
   level = 2,
+  className,
 }: HeadingProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -39,7 +41,7 @@ export function Heading({
 
   const Tag = level === 1 ? "h1" : level === 3 ? "h3" : "h2";
   return (
-    <Tag ref={headingRef} className={styles.heading}>
+    <Tag ref={headingRef} className={[styles.heading, className].filter(Boolean).join(" ")}>
       {children}
     </Tag>
   );

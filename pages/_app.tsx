@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useVhFix();
 
   return (
-    <div className={siteFont.variable}>
+    <div className={`${siteFont.variable} ${siteFont.className}`}>
       <Component {...pageProps} />
     </div>
   );

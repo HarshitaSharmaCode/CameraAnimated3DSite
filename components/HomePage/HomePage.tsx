@@ -14,7 +14,6 @@ import { CTASection } from "@/components/CTASection/CTASection";
 import { Hero } from "@/components/Hero/Hero";
 import { Imperfectionists } from "@/components/Imperfectionists/Imperfectionists";
 import { ImperfectionistsGallery } from "@/components/ImperfectionistsGallery/ImperfectionistsGallery";
-import { IntroHeading } from "@/components/IntroHeading/IntroHeading";
 import { QuoteSection } from "@/components/QuoteSection/QuoteSection";
 import { ScrollSequence } from "@/components/ScrollSequence/ScrollSequence";
 import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
@@ -96,7 +95,6 @@ export function HomePage() {
   return (
     <>
       <Hero onWatchFilm={() => setVideoOpen(true)} />
-      <IntroHeading onWatchFilm={() => setVideoOpen(true)} />
       <ScrollSequence
         frameCount={169}
         frameCountMobile={164}
@@ -106,7 +104,7 @@ export function HomePage() {
         caption={{
           eyebrow: "Built-in manual controls",
           tone: "tangerine",
-          title: "Dial through craft — six discrete modes on the top plate.",
+          title: "Master your craft with 6 camera modes",
         }}
       />
       <CameraModes modes={cameraModes} />

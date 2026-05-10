@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HeroVideo } from "@/components/HeroVideo/HeroVideo";
 import { SiteNav } from "@/components/SiteNav/SiteNav";
 import styles from "./Hero.module.scss";
@@ -19,13 +20,25 @@ interface HeroProps {
 }
 
 export function Hero({ onWatchFilm }: HeroProps) {
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: titleRef,
+    offset: ["start end", "end end"],
+  });
+
+  // Stays dim until scroll reaches mid-point of the paragraph, then fades to full
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.1, 1]);
+
   return (
     <header className={styles.hero}>
-      <SiteNav />
-      <div className={styles.videoWrap}>
-        <HeroVideo />
+      <div className={styles.videoSection}>
+        <SiteNav />
+        <div className={styles.videoWrap}>
+          <HeroVideo />
+          <div className={styles.overlay} aria-hidden />
+        </div>
       </div>
-      <div className={styles.overlay} aria-hidden />
       <motion.div
         className={styles.content}
         variants={{
@@ -34,12 +47,11 @@ export function Hero({ onWatchFilm }: HeroProps) {
         initial="hidden"
         animate="visible"
       >
-        <motion.p className={styles.kicker} variants={reveal}>
-          Introducing the Polaroid I-2
-        </motion.p>
-        <motion.h1 className={styles.title} variants={reveal}>
-          Introducing the Polaroid I-2. Engineered and designed for craft, it’s the first analog instant camera with built-in manual controls. Pair it with the sharpest-ever Polaroid lens and the unique chemistry of Polaroid film, and you have an instant craft tool made for the tactile, creative pursuit of analog photography.
-        </motion.h1>
+        <motion.div ref={titleRef} style={{ opacity: titleOpacity }}>
+          <motion.h1 className={styles.title} variants={reveal}>
+            Introducing the Polaroid I-2. Engineered and designed for craft, it's the first analog instant camera with built-in manual controls. Pair it with the sharpest-ever Polaroid lens and the unique chemistry of Polaroid film, and you have an instant craft tool made for the tactile, creative pursuit of analog photography.
+          </motion.h1>
+        </motion.div>
         <motion.div className={styles.ctaRow} variants={reveal}>
           <a className={styles.ctaPrimary} href="#buy">
             Buy now €699.99
